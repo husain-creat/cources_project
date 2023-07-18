@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>are yo sure you want to delete the following cource ?</p>
+    <p> Name : {{cource_del.name}}</p>
+    <p> description : {{cource_del.description}}</p>
+    
+    <a href="/">NO</a>
+    <a href="{% url 'delete' id=cource_del.id%}">yes</a>
+</body>
+</html>

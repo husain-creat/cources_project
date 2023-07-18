@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cources</title>
+</head>
+<body>
+    <h1>Cources</h1>
+    <form action="{% url 'cources'%}" method="post">
+        {% csrf_token %}
+        <p>name:</p>
+        <input type="text" name="name">
+        {% if messages %}
+        <ul class="messages">    
+            {% for message in messages %}    
+                <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+            {% endfor %}
+        </ul>
+        {% endif %}
+           
+        <p>description:</p>
+        <textarea name="description" rows="10" cols="10"></textarea>
+        {% if messages %}
+        <ul class="messages">    
+            {% for message in messages %}    
+                <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+            {% endfor %}
+        </ul>
+        {% endif %}
+        <input type="submit" value="add cource"/>
+        
+    </form>
+    <table>
+        {% for cource in all_cources%}
+        <tr>
+            <td>{{cource.name}}</td>
+            <td>{{cource.description}}</td>
+            <td><a href="{% url 'destroy' id=cource.id%}">remove</a></td>
+        </tr>
+        {%endfor%}
+    </table>
+</body>
+</html>
